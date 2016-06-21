@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<plugin xmlns="http://www.phonegap.com/ns/plugins/1.0"
+        id="cordova-plugin-printer"
+        version="0.1.0">
+
+  <name>Printer</name>
+
+  <engines>
+    <engine name="cordova" version=">=3.4.0"/>
+  </engines>
+
+  <!-- <asset src="www/printer.js" target="js/index.js"/> -->
+
+  <js-module src="www/printer.js" name="printer">
+    <clobbers target="printer" />
+  </js-module>
+
+  <framework src="libcups.2.dylib" />
+
+  <platform name="osx">
+
+    <config-file target="config.xml" parent="/*">
+      <feature name="Printer">
+        <param name="osx-package" value="Printer" />
+      </feature>
+    </config-file>
+
+    <header-file src="src/osx/HWPPrinter.h" target-dir="PrinterPlugin"/>
+    <source-file src="src/osx/HWPPrinter.m" target-dir="PrinterPlugin"/>
+  </platform>
+
+</plugin>
